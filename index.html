@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertical Swipe YouTube Shorts</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100dvh;
+      font-family: sans-serif;
+      background: #000;
+      overflow-x: hidden;
+      overscroll-behavior-y: contain;
+    }
+    .slider-container {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      touch-action: pan-y;
+      display: none;
+    }
+    .slider-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      transition: transform 0.5s ease;
+    }
+    .slide {
+      height: 100vh;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .slide iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+    .custom-controls {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      display: flex;
+      gap: 15px;
+      width: 100%;
+      justify-content: space-around;
+      background: rgb(0 0 0 / 64%);
+    }
+    .custom-controls button {
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom-controls .whatsapp svg {
+      width: 24px;
+      height: 24px;
+    }
+    .open-reels {
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      margin: 20px auto;
+      width: max-content;
+    }
+    .back-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="open-reels" onclick="openSlider()">Open Reels</div>
+  <div class="slider-container" id="sliderContainer">
+    <button class="back-button" onclick="closeSlider()">←</button>
+    <div class="slider-wrapper" id="slider">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="DVzqAfKlAdY"
+            src="https://www.youtube.com/embed/DVzqAfKlAdY?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=0&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔊</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="vhzO6vpBElA"
+            src="https://www.youtube.com/embed/vhzO6vpBElA?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=1&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="custom-controls">
+            <button class="muteunmute">🔇</button>
+            <button class="share">🔗</button>
+            <button class="whatsapp" title="Share on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+            </svg>
+            </button>
+        </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="DVzqAfKlAdY"
+            src="https://www.youtube.com/embed/DVzqAfKlAdY?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=0&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔊</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="vhzO6vpBElA"
+            src="https://www.youtube.com/embed/vhzO6vpBElA?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=1&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔇</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="DVzqAfKlAdY"
+            src="https://www.youtube.com/embed/DVzqAfKlAdY?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=0&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔊</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="vhzO6vpBElA"
+            src="https://www.youtube.com/embed/vhzO6vpBElA?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=1&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔇</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="DVzqAfKlAdY"
+            src="https://www.youtube.com/embed/DVzqAfKlAdY?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=0&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔊</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Slide 8 -->
+        <div class="slide">
+            <iframe class="player" data-videoid="vhzO6vpBElA"
+            src="https://www.youtube.com/embed/vhzO6vpBElA?enablejsapi=1&controls=0&rel=0&modestbranding=1&playsinline=1&mute=1&autoplay=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="custom-controls">
+                <button class="muteunmute">🔇</button>
+                <button class="share">🔗</button>
+                <button class="whatsapp" title="Share on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8651 13.403C14.4109 13.5886 14.1207 14.2997 13.8264 14.663C13.6754 14.8491 13.4954 14.8781 13.2634 14.7848C11.5586 14.1056 10.2517 12.968 9.31091 11.3991C9.15153 11.1558 9.18012 10.9636 9.37231 10.7377C9.65637 10.403 10.0136 10.0228 10.0904 9.57187C10.2611 8.57438 8.957 5.48016 7.23481 6.88219C2.27919 10.9205 15.5017 21.6309 17.8881 15.8381C18.5631 14.1961 15.6179 13.0945 14.8651 13.403ZM12.0001 21.9037C10.2475 21.9037 8.52294 21.4378 7.01309 20.5556C6.77075 20.4136 6.47778 20.3761 6.20684 20.4497L2.92606 21.3502L4.06888 18.8325C4.2245 18.4898 4.18466 18.0909 3.96481 17.7863C2.74231 16.0917 2.09591 14.0911 2.09591 12C2.09591 6.53859 6.53872 2.09578 12.0001 2.09578C17.4615 2.09578 21.9039 6.53859 21.9039 12C21.9039 17.4609 17.4611 21.9037 12.0001 21.9037ZM12.0001 0C5.38325 0 0.000125453 5.38312 0.000125453 12C0.000125453 14.3278 0.661063 16.5633 1.91684 18.5034L0.0938754 22.5183C-0.0744058 22.8891 -0.0129995 23.3231 0.250438 23.632C0.452938 23.8687 0.745907 24 1.04825 24C1.72419 24 5.40997 22.8417 6.34794 22.5844C8.08184 23.512 10.0267 24 12.0001 24C18.6165 24 24.0001 18.6164 24.0001 12C24.0001 5.38312 18.6165 0 12.0001 0Z" fill="#39AE41"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- JS -->
+  <script>
+    const slider = document.getElementById("slider");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+    let players = [];
+    let userInteracted = false;
+
+    function openSlider() {
+      document.getElementById("sliderContainer").style.display = "block";
+      document.querySelector(".open-reels").style.display = "none";
+
+      setTimeout(() => {
+        const player = players[currentSlide];
+        if (player) {
+          player.playVideo();
+          if (userInteracted || currentSlide === 0) player.unMute();
+        }
+      }, 300);
+    }
+
+    function closeSlider() {
+      document.getElementById("sliderContainer").style.display = "none";
+      document.querySelector(".open-reels").style.display = "block";
+
+      // Optionally pause current video
+      const player = players[currentSlide];
+      if (player) player.pauseVideo();
+    }
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    window.onYouTubeIframeAPIReady = function () {
+      document.querySelectorAll("iframe.player").forEach((iframe, i) => {
+        const player = new YT.Player(iframe, {
+          events: {
+            'onReady': function (event) {
+              players[i] = event.target;
+              if (i === 0) {
+                event.target.unMute();
+                event.target.playVideo();
+              } else {
+                event.target.mute();
+              }
+            }
+          }
+        });
+      });
+    };
+
+    function updateButtonStates() {
+      slides.forEach((slide, i) => {
+        const player = players[i];
+        const muteBtn = slide.querySelector(".muteunmute");
+        if (player && muteBtn) {
+          muteBtn.textContent = player.isMuted() ? "🔇" : "🔊";
+        }
+      });
+    }
+
+    function playCurrent() {
+      players.forEach((p, i) => {
+        if (i === currentSlide) {
+          if (userInteracted || i === 0) p.unMute();
+          p.playVideo();
+        } else {
+          p.pauseVideo();
+        }
+      });
+      setTimeout(updateButtonStates, 500);
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentSlide = index;
+      slider.style.transform = `translateY(-${index * 100}vh)`;
+      setTimeout(playCurrent, 300);
+    }
+
+    function setUserInteracted() {
+      if (!userInteracted) {
+        userInteracted = true;
+        players[currentSlide]?.unMute();
+        players[currentSlide]?.playVideo();
+        updateButtonStates();
+      }
+    }
+
+    document.addEventListener("click", setUserInteracted, { once: true });
+    document.addEventListener("touchstart", setUserInteracted, { once: true });
+    document.addEventListener("scroll", setUserInteracted, { once: true });
+
+    // Touch swipe
+    let touchStartY = 0;
+    let touchEndY = 0;
+    document.getElementById("sliderContainer").addEventListener("touchstart", (e) => {
+      touchStartY = e.touches[0].clientY;
+    });
+    document.getElementById("sliderContainer").addEventListener("touchend", (e) => {
+      touchEndY = e.changedTouches[0].clientY;
+      const delta = touchStartY - touchEndY;
+      if (delta > 50) goToSlide(currentSlide + 1);
+      else if (delta < -50) goToSlide(currentSlide - 1);
+    });
+
+    // Mouse wheel
+    let scrollTimeout;
+    document.getElementById("sliderContainer").addEventListener("wheel", (e) => {
+      e.preventDefault();
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (e.deltaY > 0) goToSlide(currentSlide + 1);
+        else goToSlide(currentSlide - 1);
+      }, 100);
+    });
+
+    // Tap to play/pause
+    slides.forEach((slide, i) => {
+      slide.addEventListener("click", (e) => {
+        if (e.target.closest(".custom-controls")) return;
+        const player = players[i];
+        if (!player) return;
+        const state = player.getPlayerState();
+        if (state === YT.PlayerState.PLAYING) {
+          player.pauseVideo();
+        } else {
+          player.playVideo();
+          if (userInteracted || i === 0) player.unMute();
+        }
+        updateButtonStates();
+      });
+    });
+
+    // Button clicks
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn || !btn.closest('.custom-controls')) return;
+
+      const slide = btn.closest('.slide');
+      const index = Array.from(slides).indexOf(slide);
+      const player = players[index];
+
+      if (btn.classList.contains("muteunmute")) {
+        const isMuted = player.isMuted();
+        if (isMuted) {
+          player.unMute();
+          btn.textContent = "🔊";
+        } else {
+          player.mute();
+          btn.textContent = "🔇";
+        }
+
+        setTimeout(() => {
+          btn.textContent = player.isMuted() ? "🔇" : "🔊";
+        }, 300);
+      }
+
+      if (btn.classList.contains("share")) {
+        const videoId = slide.querySelector("iframe").dataset.videoid;
+        const url = `https://www.youtube.com/watch?v=${videoId}`;
+        navigator.clipboard.writeText(url).then(() => {
+          alert("✅ Video link copied!");
+        });
+      }
+
+      if (btn.classList.contains("whatsapp")) {
+        const videoId = slide.querySelector("iframe").dataset.videoid;
+        const url = `https://www.youtube.com/watch?v=${videoId}`;
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(url)}`;
+        window.open(whatsappUrl, '_blank');
+      }
+
+      updateButtonStates();
+    });
+
+    // Desktop drag swipe
+    let isDragging = false;
+    let startY = 0;
+    document.getElementById("sliderContainer").addEventListener("mousedown", (e) => {
+      isDragging = true;
+      startY = e.clientY;
+    });
+    document.addEventListener("mouseup", (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const deltaY = startY - e.clientY;
+      if (deltaY > 50) goToSlide(currentSlide + 1);
+      else if (deltaY < -50) goToSlide(currentSlide - 1);
+    });
+  </script>
+</body>
+</html>
